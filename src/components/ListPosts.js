@@ -9,23 +9,18 @@ export default function ListPosts({ expenses, onDelete }) {
   const status = useSelector((state) => state.posts.status);
   const error = useSelector((state) => state.posts.error);
 
-  if (status === "idle") {
+  if (status === "idle" || status === "created") {
     dispatch(fetchPosts());
-  }
-  if (status === "created"){
-    dispatch(fetchPosts());
-    console.log("after create:", posts)
   }
 
   return (
     <>
-      {/*   <ListWrapper> */}
-
       {status === "succeeded" && (
         <ListWrapper>
           {posts.data.map((post) => (
             <PostCard
               key={post.id}
+              id= {post.id}
               name={post.name}
               description={post.description}
             />
@@ -41,7 +36,6 @@ const ListWrapper = styled.ul`
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  /*   background-color: red; */
   width: 100%;
   padding: 0 0 20% 0;
 `;

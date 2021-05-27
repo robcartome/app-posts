@@ -19,7 +19,7 @@ export const fetchPosts = createAsyncThunk(
 
 export const fetchCreatePost = createAsyncThunk(
   "posts/fetchCreatePost",
-  async (formData) => {
+  async ({formData, postsData}) => {
     const response = await fetch(`${BASE_URI}/api/v1/posts`, {
       method: 'POST',
       body: JSON.stringify(formData),
@@ -28,10 +28,16 @@ export const fetchCreatePost = createAsyncThunk(
 
     const data = await response.json();
     console.log("data: ",data)
+
     if (!response.ok) {
       throw new Error(JSON.stringify(data));
     }
-    return { post: data };
+/*     const dataAddedPost = {...postsData, status: "succeeded" }
+    dataAddedPost .data = [...dataAddedPost.data, data.data]
+    console.log("da:", dataAddedPost ); */
+    // console.log("prueba",postsData);
+
+    return { post: data};
   }
 );
 

@@ -1,7 +1,14 @@
 import styled from "@emotion/styled";
 import { RiDeleteBin2Line  } from "react-icons/ri";
+import { useDispatch , useSelector } from "react-redux";
+import { fetchDeletePost, fetchPosts } from "../features/posts/PostsSlice";
 
-export default function PostCard({ type, name, description, onDelete }) {
+export default function PostCard({ type, id, name, description, onDelete }) {
+  const dispatch = useDispatch();
+  const handleDelete = async (id) =>{
+    await dispatch(fetchDeletePost(id))
+    dispatch(fetchPosts());
+  }
   const header = (
     <>
       <h3>Nombre</h3>
@@ -14,7 +21,7 @@ export default function PostCard({ type, name, description, onDelete }) {
       <ColumnName><p>{name}</p></ColumnName>
       <ColumnDesc><p>{description}</p></ColumnDesc>
       <div type="submit">
-        <button>
+        <button onClick = {()=>handleDelete(id)}>
           <RiDeleteBin2Line  size="25"/>
         </button>
       </div>
@@ -48,7 +55,7 @@ const CardWrapper = styled.li`
     outline: none;
     color: white;
     :hover{
-      background-color: ${"#3685E2"};
+      background-color: ${"#FF5733"};
       cursor: pointer;
     }
   }

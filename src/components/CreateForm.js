@@ -3,10 +3,11 @@ import InputText from "./UI/InputText";
 import InputTextArea from "./UI/InputTextArea";
 import styled from "@emotion/styled";
 import { fetchCreatePost, fetchPosts } from "../features/posts/PostsSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector } from "react-redux";
 
 export default function CreateForm({ isOpen, onCreate }) {
   const dispatch = useDispatch();
+  const posts = useSelector((state) => state.posts.items);
 
   const initialState = {
     name: "",
@@ -27,9 +28,8 @@ export default function CreateForm({ isOpen, onCreate }) {
     Object.values(formData).every((value) => value !== "");
 
   const handleSubmit = (e) => {
-   /*  console.log("fd: ",formData) */
     e.preventDefault();
-    dispatch(fetchCreatePost(formData))
+    dispatch(fetchCreatePost({formData, postsData : posts}))
     reset();
   };
 
