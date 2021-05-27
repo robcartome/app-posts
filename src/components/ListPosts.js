@@ -3,7 +3,7 @@ import PostCard from "./PostCard";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts, searchPost } from "../features/posts/PostsSlice";
 
-export default function ListPosts({ expenses, onDelete }) {
+export default function ListPosts() {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.items);
   const status = useSelector((state) => state.posts.status);
