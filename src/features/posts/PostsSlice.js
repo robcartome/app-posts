@@ -58,12 +58,32 @@ export const fetchDeletePost = createAsyncThunk(
   }
 );
 
+
+
 const postsSlice = createSlice({
   name: "posts",
   initialState: {
     items: [],
     status: "idle",
     error: null,
+  },
+
+  reducers: {
+    searchPost: (state, action)=>{
+      console.log("entro a search: ", action)
+      console.log("state: ", action.payload.data)
+      console.log("sta:::", state)
+     /*  action.payload.data.filter(e => e.id = "42"); */
+      for(let key in action.payload.data){
+        const localdata = action.payload.data[key];
+        console.log(localdata.id)
+        if (localdata.name == "TUBERIAS" ){
+          console.log("Entro.", localdata)
+         /*  state = {...state, items: localdata} */
+        }
+      }
+      return state.items
+    }
   },
 
   extraReducers: {
@@ -92,4 +112,5 @@ const postsSlice = createSlice({
   },
 });
 
+export const {searchPost } = postsSlice.actions;
 export default postsSlice.reducer;

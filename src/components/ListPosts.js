@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import PostCard from "./PostCard";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPosts } from "../features/posts/PostsSlice";
+import { fetchPosts, searchPost } from "../features/posts/PostsSlice";
 
 export default function ListPosts({ expenses, onDelete }) {
   const dispatch = useDispatch();
@@ -12,6 +12,9 @@ export default function ListPosts({ expenses, onDelete }) {
   if (status === "idle" || status === "created") {
     dispatch(fetchPosts());
   }
+
+  dispatch(searchPost(posts || [], "TUBERIAS"))
+console.log("Despouesde Searach:", posts)
 
   return (
     <>
