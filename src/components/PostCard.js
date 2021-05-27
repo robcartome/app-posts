@@ -47,13 +47,10 @@ const CardWrapper = styled.li`
     background: #b8b8bb;
     outline: none;
     color: white;
-/*     &.is-in-cart {
-      background: #fa4a0c;
+    :hover{
+      background-color: ${"#3685E2"};
+      cursor: pointer;
     }
-    .ri-shopping-cart-line {
-      font-size: 20px;
-      color: #fff;
-    } */
   }
 `;
 
