@@ -2,10 +2,6 @@ import styled from "@emotion/styled";
 import { useRef, useEffect } from "react";
 import CreateForm from "./CreateForm";
 
-import { useSelector } from "react-redux";
-
-
-
 export default function Footer({ isOpen, toggleOpen }) {
   const formRef = useRef();
 
@@ -26,7 +22,7 @@ export default function Footer({ isOpen, toggleOpen }) {
   return (
     <Container isOpen={isOpen} onClick={toggleOpen} ref={formRef}>
       <Title>Nuevo Post</Title>
-      <CreateForm isOpen={isOpen} toggleOpen = {toggleOpen} />
+      <CreateForm isOpen={isOpen} toggleOpen={toggleOpen} />
     </Container>
   );
 }

@@ -7,7 +7,7 @@ export default function ListPosts({ expenses, onDelete }) {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.items);
   const status = useSelector((state) => state.posts.status);
-  const error = useSelector((state) => state.posts.error);
+  // const error = useSelector((state) => state.posts.error);
 
   if (status === "idle" || status === "created") {
     dispatch(fetchPosts());
@@ -15,6 +15,7 @@ export default function ListPosts({ expenses, onDelete }) {
 
   return (
     <>
+      {status === "failed" && (<h4>{posts.errors}</h4>)}
       {status === "succeeded" && (
         <ListWrapper>
           {posts.data.map((post) => (

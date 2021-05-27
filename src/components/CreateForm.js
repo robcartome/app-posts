@@ -2,7 +2,7 @@ import { useState } from "react";
 import InputText from "./UI/InputText";
 import InputTextArea from "./UI/InputTextArea";
 import styled from "@emotion/styled";
-import { fetchCreatePost, fetchPosts } from "../features/posts/PostsSlice";
+import { fetchCreatePost } from "../features/posts/PostsSlice";
 import { useDispatch , useSelector } from "react-redux";
 
 export default function CreateForm({ isOpen, toggleOpen }) {
