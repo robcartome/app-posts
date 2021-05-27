@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 import { fetchCreatePost, fetchPosts } from "../features/posts/PostsSlice";
 import { useDispatch , useSelector } from "react-redux";
 
-export default function CreateForm({ isOpen, onCreate }) {
+export default function CreateForm({ isOpen, toggleOpen }) {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.items);
 
@@ -31,6 +31,7 @@ export default function CreateForm({ isOpen, onCreate }) {
     e.preventDefault();
     dispatch(fetchCreatePost({formData, postsData : posts}))
     reset();
+    toggleOpen(false);
   };
 
   return (

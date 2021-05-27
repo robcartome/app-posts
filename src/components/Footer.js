@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 
 
-export default function Footer({ onCreate, isOpen, toggleOpen }) {
+export default function Footer({ isOpen, toggleOpen }) {
   const formRef = useRef();
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Footer({ onCreate, isOpen, toggleOpen }) {
   return (
     <Container isOpen={isOpen} onClick={toggleOpen} ref={formRef}>
       <Title>Nuevo Post</Title>
-      <CreateForm isOpen={isOpen} onCreate={onCreate} />
+      <CreateForm isOpen={isOpen} toggleOpen = {toggleOpen} />
     </Container>
   );
 }
