@@ -2,8 +2,12 @@ import { useState } from "react";
 import InputText from "./UI/InputText";
 import InputTextArea from "./UI/InputTextArea";
 import styled from "@emotion/styled";
+import { fetchCreatePost, fetchPosts } from "../features/posts/PostsSlice";
+import { useDispatch } from "react-redux";
 
 export default function CreateForm({ isOpen, onCreate }) {
+  const dispatch = useDispatch();
+
   const initialState = {
     name: "",
     description: "",
@@ -23,8 +27,9 @@ export default function CreateForm({ isOpen, onCreate }) {
     Object.values(formData).every((value) => value !== "");
 
   const handleSubmit = (e) => {
+   /*  console.log("fd: ",formData) */
     e.preventDefault();
-    onCreate(formData);
+    dispatch(fetchCreatePost(formData))
     reset();
   };
 

@@ -20,7 +20,7 @@ export default function PostCard({ type, name, description, onDelete }) {
       </div>
     </>
   );
-  return <CardWrapper>{type == "header" ? header : list}</CardWrapper>;
+  return <CardWrapper>{type === "header" ? header : list}</CardWrapper>;
 }
 
 const CardWrapper = styled.li`
