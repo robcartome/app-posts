@@ -70,19 +70,18 @@ const postsSlice = createSlice({
 
   reducers: {
     searchPost: (state, action)=>{
-      console.log("entro a search: ", action)
-      console.log("state: ", action.payload.data)
-      console.log("sta:::", state)
-     /*  action.payload.data.filter(e => e.id = "42"); */
+     let searchData = {};
       for(let key in action.payload.data){
-        const localdata = action.payload.data[key];
-        console.log(localdata.id)
-        if (localdata.name == "TUBERIAS" ){
-          console.log("Entro.", localdata)
+        const localData = action.payload.data[key];
+        console.log(localData.id)
+        if (localData.name == "TUBERIAS" ){
+          console.log("Entro.", localData)
          /*  state = {...state, items: localdata} */
+         searchData = localData;
         }
       }
-      return state.items
+      console.log(searchData)
+      return searchData
     }
   },
 

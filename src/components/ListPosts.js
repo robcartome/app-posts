@@ -7,14 +7,13 @@ export default function ListPosts({ expenses, onDelete }) {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.items);
   const status = useSelector((state) => state.posts.status);
-  // const error = useSelector((state) => state.posts.error);
 
   if (status === "idle" || status === "created") {
     dispatch(fetchPosts());
   }
 
-  dispatch(searchPost(posts || [], "TUBERIAS"))
-console.log("Despouesde Searach:", posts)
+/*   dispatch(searchPost(posts || [], "TUBERIAS"))
+console.log("Despouesde Searach:", posts) */
 
   return (
     <>

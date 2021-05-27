@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import ListPosts from "./components/ListPosts";
 import Footer from "./components/Footer";
 import { useState } from "react";
+import SearchForm from "./components/SearchForm";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <Wrapper>
+      <SearchForm/>
       <ListPosts />
       <Footer isOpen={isOpen} toggleOpen={toggleOpen} />
     </Wrapper>
@@ -30,6 +32,7 @@ const Wrapper = styled.div`
   max-width: 900px;
   font-size: 1.5em;
   padding: 30px;
+  
 `;
 
 export default App;
